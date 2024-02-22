@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.time.LocalDateTime;
 public class PlantList {
     private List<Plant> plants = new ArrayList<>();
     public PlantList(){
@@ -22,6 +22,13 @@ public class PlantList {
             while (scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 String[] parts = line.split("\t"+","+";"+" ");
+                String name = parts[0];
+                String notes = parts[1];
+                int frequencyOfWatering = Integer.parseInt(parts[2]);
+                LocalDateTime planted = LocalDateTime.parse(parts[3]);
+                LocalDateTime watering = LocalDateTime.parse(parts[4]);
+                Plant plant = new Plant(name, notes,planted, watering,frequencyOfWatering);
+                plants.add(plant);
             }
         } catch (FileNotFoundException e){
             System.err.println("Nastala chyba při načítání dat "+e.getLocalizedMessage());
