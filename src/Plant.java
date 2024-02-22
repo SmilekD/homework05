@@ -9,19 +9,20 @@ public class Plant {
 
     // KONSTRUKTORY //////////////////////////////////////
     public Plant(String name, String notes, LocalDateTime planted,
-                 LocalDateTime watering, int frequencyOfWatering) {
+                 LocalDateTime watering, int frequencyOfWatering)
+            throws PlantException {
         this.name = name;
         this.notes = notes;
         this.planted = planted;
-        this.watering = watering;
-        this.frequencyOfWatering = frequencyOfWatering;
+        setWatering(watering);
+        setFrequencyOfWatering(frequencyOfWatering);
     }
 
-    public Plant(String name,LocalDateTime planted,int frequencyOfWatering){
+    public Plant(String name,LocalDateTime planted,int frequencyOfWatering) throws PlantException {
         this(name,"",planted,LocalDateTime.now(),frequencyOfWatering);
     }
 
-    public Plant(String name){
+    public Plant(String name) throws PlantException {
         this(name,"",LocalDateTime.now(),LocalDateTime.now(),7);
     }
 
@@ -63,7 +64,11 @@ public class Plant {
         return watering;
     }
 
-    public void setWatering(LocalDateTime watering) {
+    public void setWatering(LocalDateTime watering) throws PlantException {
+        if (watering.isBefore(planted)){
+            throw new PlantException("Datum poslední zálivky nemůže být starší než datum" +
+                    " zasazení rostliny !");
+        }
         this.watering = watering;
     }
 
@@ -71,7 +76,7 @@ public class Plant {
         return frequencyOfWatering;
     }
 
-    public void setFrequencyOfWatering(int frequencyOfWatering) {
+    public void setFrequencyOfWatering(int frequencyOfWatering) throws PlantException {
         if (frequencyOfWatering <= 0){
             throw new PlantException("Zadávaná frekvence zalévání" +
                     "musí být větší než 0 !!");
