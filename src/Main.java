@@ -1,5 +1,7 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -51,13 +53,16 @@ public class Main {
             System.err.println("Chyba při nahrávání květin do souboru: "+
                     e.getLocalizedMessage());
         }
-////////////////// NEFUNKČNÍ NAČÍTÁNÍ ZE SOUBORU //////////////////////////////
+
         try {
             plantList.loadPlantsfromFile(Settings.getFileNameExport());
         } catch (PlantException e) {
             System.err.println("Nastala chyba při načítání květin ze souboru"+
                     e.getLocalizedMessage());
         }
-
+        System.out.println("Obsah seznamu rostlin: "+plantList.getPlants());
+        Collections.sort(plantList.getPlants());
+        System.out.println("=================================================");
+        System.out.println("Seřazený obsah seznamu rostlin: "+plantList.getPlants());
     }
 }

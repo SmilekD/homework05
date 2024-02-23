@@ -5,9 +5,6 @@ import java.util.Scanner;
 import java.time.LocalDateTime;
 public class PlantList {
     private List<Plant> plants = new ArrayList<>();
-    public PlantList(){
-        this.plants = new ArrayList<>();
-    }
     public void addPlant(Plant plant){
         plants.add(plant);
     }
@@ -16,6 +13,9 @@ public class PlantList {
     }
     public void removePlant(int index){
         plants.remove(index);
+    }
+    public List<Plant> getPlants(){
+        return new ArrayList<>(plants);
     }
     public void loadPlantsfromFile(String fileName) throws PlantException{
         try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(fileName)))) {
