@@ -49,4 +49,9 @@ public class PlantList {
             throw new PlantException("Chyba výstupu při zápisu do souboru\n"+e.getLocalizedMessage());
         }
     }
+    public void printWateringInfo(){
+        for (Plant plant : plants){
+            System.out.println(plant.getWateringinfo());
+        }
+    }
 }
