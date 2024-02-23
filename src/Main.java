@@ -51,5 +51,13 @@ public class Main {
             System.err.println("Chyba při nahrávání květin do souboru: "+
                     e.getLocalizedMessage());
         }
+////////////////// NEFUNKČNÍ NAČÍTÁNÍ ZE SOUBORU //////////////////////////////
+        try {
+            plantList.loadPlantsfromFile(Settings.getFileNameExport());
+        } catch (PlantException e) {
+            System.err.println("Nastala chyba při načítání květin ze souboru"+
+                    e.getLocalizedMessage());
+        }
+
     }
 }

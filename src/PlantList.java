@@ -21,12 +21,12 @@ public class PlantList {
         try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(fileName)))) {
             while (scanner.hasNextLine()){
                 String line = scanner.nextLine();
-                String[] parts = line.split("\t");
+                String[] parts = line.split(",");
                 String name = parts[0];
                 String notes = parts[1];
-                int frequencyOfWatering = Integer.parseInt(parts[2]);
-                LocalDateTime planted = LocalDateTime.parse(parts[3]);
-                LocalDateTime watering = LocalDateTime.parse(parts[4]);
+                int frequencyOfWatering = Integer.parseInt(parts[4]);
+                LocalDateTime planted = LocalDateTime.parse(parts[2]);
+                LocalDateTime watering = LocalDateTime.parse(parts[3]);
                 Plant plant = new Plant(name, notes,planted, watering,frequencyOfWatering);
                 plants.add(plant);
             }
