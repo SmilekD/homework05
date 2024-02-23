@@ -21,7 +21,7 @@ public class PlantList {
         try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(fileName)))) {
             while (scanner.hasNextLine()){
                 String line = scanner.nextLine();
-                String[] parts = line.split("\t"+","+";"+" ");
+                String[] parts = line.split("\t");
                 String name = parts[0];
                 String notes = parts[1];
                 int frequencyOfWatering = Integer.parseInt(parts[2]);

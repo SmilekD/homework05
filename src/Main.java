@@ -18,5 +18,13 @@ public class Main {
             System.err.println("Nastala chyba při ukládání frekvence zalévání:\n"
                     +e.getLocalizedMessage());
         }
+        PlantList plantList = new PlantList();
+        try {
+            plantList.loadPlantsfromFile(Settings.getFileName());
+        } catch (PlantException e) {
+            System.err.println("Nastala chyba při načítání dat ze souborů"+
+                    e.getLocalizedMessage());
+        }
+
     }
 }
